@@ -34,7 +34,7 @@ class PostController extends Controller
         $data = $request ->validated();
 
         $post = Post::create($data);
-        return redirect('/');
+        return redirect('/')->with('success','votre post a bien été créé');
     }
 
     /**
@@ -66,7 +66,7 @@ class PostController extends Controller
 
         $post->update($data);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'votre post a bien été modifié');
     }
 
     /**
@@ -75,5 +75,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        return redirect('/')->with('success', 'votre post a bien été supprimé');
     }
 }
